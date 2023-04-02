@@ -9,6 +9,7 @@ origins = [
     "http://localhost:8000",
 ]
 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -17,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 @app.post("/prompt")
 async def get_prompt(request: Request):
@@ -82,7 +83,7 @@ async def check_answer(request: Request):
 
     if ans:
         prompt = """
-        What if i answered the previous mcq correctly what will be my next mcq squestion based on the previous questions,
+        create next question on same topics if i answered the previous question correctly based on difficulty,
 
         the question should follow the following format
         Question: your question?
@@ -99,7 +100,7 @@ async def check_answer(request: Request):
         
     elif ans == False:
         prompt = """
-        What if i answered the previous mcq wrongly what will be my next mcq question based on the previous questions ,
+        create next question on same topics if i answered the previous question wrongly based on difficulty  ,
 
         the question should follow the following format
         Question: your question?
