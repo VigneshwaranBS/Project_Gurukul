@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 import openai
 from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 
 origins = [
@@ -18,18 +19,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 @app.post("/prompt")
 async def get_prompt(request: Request):
     data = await request.json()
     prompt = data["prompt"]
     print(prompt)
+    
     query = f"""
     create a mcq neet question on ${prompt} where it should follow the following format
     Question: your question?
 
-    A. something
+    A.something
     B.someting
     C.somthing
     D.somthing
@@ -88,7 +90,7 @@ async def check_answer(request: Request):
         the question should follow the following format
         Question: your question?
 
-        A. something
+        A.something
         B.someting
         C.somthing
         D.somthing
