@@ -28,7 +28,7 @@ async def get_prompt(request: Request):
     print(prompt)
     
     query = f"""
-    create a mcq neet question on ${prompt} where it should follow the following format
+    create a mcq neet question on ${prompt} where it should follow the following format with difficulty level of question range from 1 - 10 .
     Question: your question?
 
     A.something
